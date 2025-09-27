@@ -56,6 +56,7 @@ public class Elytraskyaddon extends MeteorAddon implements ClientModInitializer 
     }
 
     public static String getVersion() {
-        return "0.0.2";
+        return "1.0.3 Beta 1";
     }
+
 }
