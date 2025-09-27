@@ -20,7 +20,7 @@ public class Yuzusayings extends Module {
 
     private final Setting<Integer> delay = sgGeneral.add(new IntSetting.Builder()
             .name("delay")
-            .description("发送消息的延迟（tick）")
+            .description("Delay (ticks)")
             .defaultValue(600)
             .min(20)
             .max(3600)
@@ -31,7 +31,7 @@ public class Yuzusayings extends Module {
 
     private final Setting<Boolean> showPrefix = sgGeneral.add(new BoolSetting.Builder()
             .name("show-prefix")
-            .description("是否显示模块前缀")
+            .description("Display prefix")
             .defaultValue(true)
             .build()
     );
@@ -41,7 +41,7 @@ public class Yuzusayings extends Module {
     private Random random = new Random();
 
     public Yuzusayings() {
-        super(xbwk.addon.Elytraskyaddon.CATEGORY, "yuzu-sayings", "从资源文件读取并发送随机消息");
+        super(xbwk.addon.Elytraskyaddon.CATEGORY, "yuzu-sayings", "Read the list file and send random messages");
     }
 
     @Override
@@ -49,7 +49,7 @@ public class Yuzusayings extends Module {
         loadMessages();
         timer = 0;
         if (mc.player != null) {
-            info("已加载 " + messages.size() + " 条消息");
+            info("Loaded " + messages.size() + " messages");
         }
     }
 
@@ -57,7 +57,7 @@ public class Yuzusayings extends Module {
     public void onDeactivate() {
         messages.clear();
         if (mc.player != null) {
-            info("消息发送已停止");
+            info("Stopped");
         }
     }
 
@@ -75,17 +75,17 @@ public class Yuzusayings extends Module {
                     }
                 }
                 if (mc.player != null) {
-                    info("成功从资源文件加载 " + messages.size() + " 条消息");
+                    info("Loaded " + messages.size() + " messages");
                 }
             } else {
                 if (mc.player != null) {
-                    error("资源文件未找到: yuzu_sayings.txt");
+                    error("yuzu_sayings.txt not found");
                 }
                 addDefaultMessages();
             }
         } catch (Exception e) {
             if (mc.player != null) {
-                error("读取资源文件失败: " + e.getMessage());
+                error("Failed to read: " + e.getMessage());
             }
             addDefaultMessages();
         }
@@ -94,7 +94,7 @@ public class Yuzusayings extends Module {
     private void addDefaultMessages() {
         messages.add("此情无计可消除，才Cia眉llo～(∠・ω< )⌒★，Cia上心llo～(∠・ω< )⌒★。《一剪梅·红藕香残玉簟秋》");
         if (mc.player != null) {
-            info("使用默认消息，共 " + messages.size() + " 条");
+            info("using default messages " + messages.size() + " messages");
         }
     }
 
@@ -126,7 +126,7 @@ public class Yuzusayings extends Module {
     public void reloadMessages() {
         loadMessages();
         if (mc.player != null) {
-            info("重新加载了 " + messages.size() + " 条消息");
+            info("Reloaded " + messages.size() + " messages");
         }
     }
 
@@ -139,4 +139,5 @@ public class Yuzusayings extends Module {
     public void sendRandomMessageNow() {
         sendRandomMessage();
     }
+
 }
