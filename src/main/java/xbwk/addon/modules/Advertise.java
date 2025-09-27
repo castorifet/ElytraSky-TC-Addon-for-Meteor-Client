@@ -46,21 +46,21 @@ public class Advertise extends Module {
     // 消息设置
     private final Setting<CommandType> commandType = sgGeneral.add(new EnumSetting.Builder<CommandType>()
             .name("command-type")
-            .description("The type of command to use for messaging.")
+            .description("Send specific message to all players in a server.")
             .defaultValue(CommandType.MSG)
             .build()
     );
 
     private final Setting<String> message = sgGeneral.add(new StringSetting.Builder()
             .name("message")
-            .description("The message to send to players.")
+            .description("Message to send")
             .defaultValue("Join ElytraSky at qq group 1029533840, we will offer kits.")
             .build()
     );
 
     private final Setting<Integer> delay = sgGeneral.add(new IntSetting.Builder()
             .name("delay")
-            .description("Delay between messages in ticks (20 ticks = 1 second).")
+            .description("Delay in ticks (20tick=1s)")
             .defaultValue(100)
             .min(20)
             .sliderMin(20)
@@ -229,7 +229,7 @@ public class Advertise extends Module {
             if (randomize.get() && !playerList.isEmpty()) {
                 Collections.shuffle(playerList);
             }
-            info("Starting new round with same player list");
+            info("Player List refreshed,starting again.");
         }
 
         isFirstRound = false;
@@ -269,4 +269,5 @@ public class Advertise extends Module {
         }
         info("Started new messaging round");
     }
+
 }
